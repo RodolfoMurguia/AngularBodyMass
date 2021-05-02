@@ -1,21 +1,31 @@
+<h1>
+  {{title}}
+</h1>
 
-<div class="summary">
 
-  <h1>Calculadora de indice de masa corporal</h1>
+<div class="container">
+  
 
-  <form action="" method="get">
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+    <div class="form-group">
+      <label for="weight">Ingrese su peso (kg): </label>
 
-    <label for="weight">Ingrese su peso (kg):</label>
-    <input type="text" name="weight">
+      <br>
 
-    <br>
+      <input type="text" class="form-control" id="name" 
+        placeholder="Ingrese su peso" formControlName="weight"/>
+    </div>
 
-    <label for="height">Ingrese su estatura (cm):</label>
-    <input type="number" name="height" defaultValue = 0>
+    <div class="form-group">
+      <label for="name">Ingrese su estatura (cm):</label>
 
-    <br>
+      <br>
 
-    <button type="submit">Calcular IMC</button>
+      <input type="height" class="form-control" id="email" 
+        placeholder="Ingrese su estatura" formControlName="height"/>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit Form</button>
 
   </form>
 </div>
