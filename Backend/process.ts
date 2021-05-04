@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//const express = require('express');
+var cors = require('cors')
 const port = 8095;
 
-var app = express();
+
+var app = express()
+ 
+app.use(cors())
 
 app.listen(port, () => {
   console.log("Server running on port 8095");
