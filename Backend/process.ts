@@ -14,16 +14,21 @@ app.listen(port, () => {
 
  app.get("/getMassIndex", (req: any, res: any, next: any) => {
   
-    //Verificamos campos vacios
-    var weight = req.query.weight || 0;
-    var height = req.query.height || 0;
+    console.log("Se recibe request de nuevo")
 
-    if (weight === 0 || height === 0){
+    //Verificamos campos vacios
+    var weight = req.query.weight == 'NaN' ? 0 : req.query.weight;
+    var height = req.query.height == 'NaN' ? 0 : req.query.height;
+
+    console.log(`Se reciben los parametros de estatura: ${height} y masa: ${weight}`)
+
+    if (weight == 0 || height == 0){
 
       //Retorno error
 
       res.status(401);
       res.json({messages:"ERROR, parametros erroneos o faltantes", peso: 0, estatura: 0, bodyMass: 0, weightType: "No aplica"});
+      console.error("Ha ocurrido un error")
       return res;
      
 
@@ -53,6 +58,9 @@ app.listen(port, () => {
 
       res.status(200);
       res.json({messages:"OK", peso: weight, estatura: height, bodyMass: IMC, weightType: weightLevel});
+
+      console.log(`Operacion exitosa, Datos: ${height}, ${weight}, ${IMC} `)
+
       return res
 
     }
